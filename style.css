@@ -1,0 +1,10 @@
+.carrousel {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 2px solid red;
+}
+
+.bouton__ouvrir {
+  width: 200px;
+}/*# sourceMappingURL=style.css.map */
