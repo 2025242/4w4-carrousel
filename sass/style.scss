@@ -9,11 +9,19 @@
     z-index: 5;
 }
 .carrousel__x{
- position:absolute ;
+ position:absolute;
  right: 0;
  top: 0;
  padding: 5px 3px;
  display: block;
+ border: 1px solid #555;
+ z-index: 2;
+}
+.carrousel__figure{
+ position:absolute ;
+}
+.carrousel__img{
+    
 }
 .carrousel--ouvrir{
     display: block;
