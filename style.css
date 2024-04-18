@@ -1,11 +1,26 @@
 .carrousel {
+  display: none;
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 50%;
+  height: 50%;
   border: 2px solid red;
+  top: 25%;
+  left: 25%;
+  z-index: 5;
+}
+
+.carrousel__x {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 3px;
+  display: block;
+}
+
+.carrousel--ouvrir {
+  display: block;
 }
 
 .bouton__ouvrir {
   width: 200px;
-  position: absolute;
 }/*# sourceMappingURL=style.css.map */
