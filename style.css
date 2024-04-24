@@ -1,14 +1,24 @@
 .carrousel {
   display: none;
-  position: absolute;
-  width: 50%;
-  height: 50%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   border: 2px solid red;
-  top: 25%;
-  left: 25%;
+  top: 0;
+  left: 0;
   z-index: 5;
+  background-color: white; /* Ensure background contrast for visibility */
+  padding: 20px; /* Add padding for internal spacing */
 }
 
+@media screen and (min-width: 500px) {
+  .carrousel {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+  }
+}
 .carrousel__x {
   position: absolute;
   right: 0;
@@ -16,11 +26,40 @@
   padding: 5px 3px;
   display: block;
   border: 1px solid #555;
-  z-index: 2;
+  z-index: 10; /* Ensure it's above other elements */
+  cursor: pointer; /* Make it clear it's clickable */
 }
 
 .carrousel__figure {
   position: absolute;
+  width: 100%;
+  height: 80%; /* Reduce height to make space for radios */
+  top: 0;
+  left: 0;
+  background-color: black;
+}
+
+.carrousel__img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carrousel__radio {
+  display: inline-block; /* Make sure radios are in a line */
+  margin: 10px 5px; /* Space out the radios */
+  cursor: pointer; /* Make it clear they are clickable */
+}
+
+.carrousel__form {
+  position: absolute;
+  bottom: 5px; /* Position form at the bottom of the carousel */
+  width: 100%;
+  text-align: center; /* Center the radios horizontally */
+  z-index: 9; /* Above images but below the close button */
 }
 
 .carrousel--ouvrir {
@@ -29,4 +68,24 @@
 
 .bouton__ouvrir {
   width: 200px;
+}
+
+.carrousel__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.carrousel__nav--left {
+  left: 10px;
+}
+
+.carrousel__nav--right {
+  right: 10px;
 }/*# sourceMappingURL=style.css.map */
