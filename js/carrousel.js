@@ -5,15 +5,10 @@
     let galerie = document.querySelector('.galerie');
     let galerie__img = galerie.querySelectorAll('img');
     let carrousel__figure = document.querySelector('.carrousel__figure');
+    let currentIndex = 0; // To track the current index for the radio button and image
 
-    // Création dynamique des images du carrousel et des boutons radio
-    galerie__img.forEach((elm, index) => {
-        creer_image_carrousel(index, elm);
-        creer_radio_carrousel(index);
-    });
-
+    // Functions to create each image and radio button for the carousel
     function creer_image_carrousel(index, elm) {
-        console.log(elm.src);
         let carrousel__img = document.createElement('img');
         carrousel__img.src = elm.src;
         carrousel__img.classList.add('carrousel__img');
@@ -28,52 +23,61 @@
         carrousel__radio.className = 'carrousel__radio';
         carrousel__radio.name = 'carrousel_radio';
         carrousel__radio.dataset.index = index;
-
         carrousel__form.appendChild(carrousel__radio);
-
         carrousel__radio.addEventListener('change', function() {
             let allImages = document.querySelectorAll('.carrousel__img');
-            allImages.forEach(img => img.style.opacity = 0);
-            allImages[index].style.opacity = 1;
+            allImages.forEach(img => {
+                img.style.opacity = 0; // Hide all images
+                img.style.display = 'none'; // Add display none for smooth transition
+            });
+            setTimeout(() => {
+                allImages[index].style.display = 'block';
+                allImages[index].style.opacity = 1;
+            }, 10);
         });
     }
-document.addEventListener('DOMContentLoaded', function() {
+
+    // Adding images and radios to the carousel
+    galerie__img.forEach((elm, index) => {
+        creer_image_carrousel(index, elm);
+        creer_radio_carrousel(index);
+    });
+
+    // Navigation function to update the active radio button and thus the image
+  function updateRadio(index) {
+    const allImages = document.querySelectorAll('.carrousel__img');
     const radios = document.querySelectorAll('.carrousel__radio');
+
+    // First, make all images invisible
+    allImages.forEach(img => {
+        img.classList.remove('active');
+    });
+
+    // Then delay the visibility of the next image
+    setTimeout(() => {
+        allImages[index].classList.add('active');
+    }, 150); // Delay slightly more than the transition time
+
+    // Update radio buttons
+    radios.forEach(radio => radio.checked = false);
+    radios[index].checked = true;
+}
+
+    // Navigation buttons functionality
     const leftButton = document.querySelector('.carrousel__nav--left');
     const rightButton = document.querySelector('.carrousel__nav--right');
 
-    let currentIndex = 0; // Track the current radio index
-
-    function updateRadio(index) {
-        radios.forEach(radio => radio.checked = false);
-        radios[index].checked = true;
-        radios[index].dispatchEvent(new Event('change'));
-    }
-
     leftButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            currentIndex = radios.length - 1; // wrap around to the last radio
-        }
+        currentIndex = currentIndex > 0 ? currentIndex - 1 : galerie__img.length - 1;
         updateRadio(currentIndex);
     });
 
     rightButton.addEventListener('click', () => {
-        if (currentIndex < radios.length - 1) {
-            currentIndex++;
-        } else {
-            currentIndex = 0; // wrap around to the first radio
-        }
+        currentIndex = currentIndex < galerie__img.length - 1 ? currentIndex + 1 : 0;
         updateRadio(currentIndex);
     });
 
-    // Initialize the first radio as checked
-    if (radios.length > 0) {
-        updateRadio(0);
-    }
-});
-    // Écouteurs pour ouvrir et fermer le carrousel
+    // Button listeners to open and close the carousel
     bouton.addEventListener('mousedown', function() {
         carrousel.classList.add('carrousel--ouvrir');
     });
@@ -82,4 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
     boutonFermer.addEventListener('mousedown', function() {
         carrousel.classList.remove('carrousel--ouvrir');
     });
+
+    // Initialize the first radio as checked and visible
+    if (galerie__img.length > 0) {
+        updateRadio(0); // Ensures the first image is displayed on load
+    }
 })();
