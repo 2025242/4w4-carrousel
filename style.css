@@ -97,7 +97,17 @@
 }
 
 .bouton__ouvrir {
-  width: 200px;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background-image: linear-gradient(to right, #3364d4, #f4baf9);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 auto;
 }
 
 .carrousel__nav {
