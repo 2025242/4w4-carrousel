@@ -6,9 +6,6 @@ Salma Bourakkadi
 ## Lien vers votre site sur l’hébergeur « WHC »
 [Accéder au site hébergé](https://gftnth00.mywhc.ca/tim11/)
 
-## GitHub Page
-[Accéder à la GitHub Page](https://2025242.github.io/4w4-2024/)
-
 ## Description
 Ce projet est le résultat du TP2 pour le cours multimédia. Il s'agit d'une amélioration du TP1 avec l'ajout d'un carrousel dynamique pour la galerie d'images.
 
