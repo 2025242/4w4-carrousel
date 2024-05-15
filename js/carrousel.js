@@ -1,7 +1,6 @@
 (function() {
     // On récupère les éléments nécessaires
     let carrousel = document.querySelector('.carrousel');
-    let bouton = document.querySelector('.bouton__ouvrir');
     let galerie = document.querySelector('.galerie');
     let galerie__img = galerie.querySelectorAll('img');
     let carrousel__figure = document.querySelector('.carrousel__figure');
@@ -41,27 +40,36 @@
     galerie__img.forEach((elm, index) => {
         creer_image_carrousel(index, elm);
         creer_radio_carrousel(index);
+
+        // Add event listener to open carousel on image click
+        elm.addEventListener('click', () => {
+            currentIndex = index; // Set current index to the clicked image index
+            updateRadio(currentIndex); // Update the carousel to show the clicked image
+            carrousel.classList.add('carrousel--ouvrir'); // Open the carousel
+        });
     });
 
     // Navigation function to update the active radio button and thus the image
-  function updateRadio(index) {
-    const allImages = document.querySelectorAll('.carrousel__img');
-    const radios = document.querySelectorAll('.carrousel__radio');
+    function updateRadio(index) {
+        const allImages = document.querySelectorAll('.carrousel__img');
+        const radios = document.querySelectorAll('.carrousel__radio');
 
-    // First, make all images invisible
-    allImages.forEach(img => {
-        img.classList.remove('active');
-    });
+        // First, make all images invisible
+        allImages.forEach(img => {
+            img.classList.remove('active');
+            img.style.display = 'none'; // Hide all images initially
+        });
 
-    // Then delay the visibility of the next image
-    setTimeout(() => {
-        allImages[index].classList.add('active');
-    }, 150); // Delay slightly more than the transition time
+        // Then delay the visibility of the next image
+        setTimeout(() => {
+            allImages[index].classList.add('active');
+            allImages[index].style.display = 'block'; // Show the selected image
+        }, 10); // Delay slightly more than the transition time
 
-    // Update radio buttons
-    radios.forEach(radio => radio.checked = false);
-    radios[index].checked = true;
-}
+        // Update radio buttons
+        radios.forEach(radio => radio.checked = false);
+        radios[index].checked = true;
+    }
 
     // Navigation buttons functionality
     const leftButton = document.querySelector('.carrousel__nav--left');
@@ -77,11 +85,7 @@
         updateRadio(currentIndex);
     });
 
-    // Button listeners to open and close the carousel
-    bouton.addEventListener('mousedown', function() {
-        carrousel.classList.add('carrousel--ouvrir');
-    });
-
+    // Button listener to close the carousel
     let boutonFermer = document.querySelector('.carrousel__x');
     boutonFermer.addEventListener('mousedown', function() {
         carrousel.classList.remove('carrousel--ouvrir');
@@ -91,4 +95,5 @@
     if (galerie__img.length > 0) {
         updateRadio(0); // Ensures the first image is displayed on load
     }
+
 })();

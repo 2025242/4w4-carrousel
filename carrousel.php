@@ -28,7 +28,6 @@ $version_js = filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");
 add_action( 'wp_enqueue_scripts', 'enqueue_style_script' );
 function genere_html() {
     $html = '
-    <button class="bouton__ouvrir">Ouvrir Carousel</button>
     <div class="carrousel">
         <button class="carrousel__x">X</button>
         <figure class="carrousel__figure"></figure>
