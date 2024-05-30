@@ -8,6 +8,7 @@
  * Author URI: https://referenced.ca
  */
 
+
 function enqueue_style_script(){
 $version_css = filemtime(plugin_dir_path( __FILE__ ) . "style.css");
 $version_js = filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");
@@ -23,18 +24,19 @@ $version_js = filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");
                     $version_js,
                     true);
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_style_script' );
- 
-function genere_html() {
-$html='
-<button class="bouton__ouvrir">Ouvrir Carousel</button>
-<div class="carrousel">
-    <a href="" class="carrousel__x">X</a>
-    <figure class="carrousel__figure"></figure>
-    <form action="" class="carrousel__form"></form>
-</div>
-';
-return $html;
-}
 
+add_action( 'wp_enqueue_scripts', 'enqueue_style_script' );
+function genere_html() {
+    $html = '
+    <div class="carrousel">
+        <button class="carrousel__x">X</button>
+        <figure class="carrousel__figure"></figure>
+        <form action="" class="carrousel__form"></form>
+        <button class="carrousel__nav carrousel__nav--left">&lt;</button> <!-- Left arrow button -->
+        <button class="carrousel__nav carrousel__nav--right">&gt;</button> <!-- Right arrow button -->
+    </div>
+    ';
+    return $html;
+}
+//[carrousel] juste apres la galerie dans notre article ou page
 add_shortcode( 'carrousel', 'genere_html' );
