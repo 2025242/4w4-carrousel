@@ -36,8 +36,8 @@
 .carrousel__x {
   color: white;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 1;
+  top: 2;
   padding: 5px 3px;
   display: block;
   border: 1px solid #555;
@@ -47,7 +47,7 @@
   border-radius: 30%;
   cursor: pointer;
   padding: 5px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .carrousel__figure {
