@@ -8,6 +8,7 @@
   z-index: 5;
   background-color: #6699ff;
   padding: 20px;
+  box-sizing: border-box; /* Ensure padding doesn't affect overall dimensions */
 }
 
 @media screen and (min-width: 500px) {
@@ -16,13 +17,6 @@
     height: 75%;
     top: 12.5%;
     left: 12.5%;
-    padding: 20px;
-  }
-  .carrousel__nav--left {
-    left: 10px;
-  }
-  .carrousel__nav--right {
-    right: 10px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -57,6 +51,9 @@
   top: 0;
   left: 0;
   background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carrousel__img {
@@ -77,9 +74,8 @@
 }
 
 .carrousel__radio {
-  text-align: center;
   display: inline-block;
-  margin: 60px 5px;
+  margin: 0 10px;
   cursor: pointer;
   color: #6699ff;
 }
@@ -90,6 +86,9 @@
   width: 100%;
   text-align: center;
   z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carrousel--ouvrir {
@@ -116,16 +115,16 @@
   transform: translateY(-50%);
   z-index: 10;
   background-color: rgba(213, 187, 228, 0.7411764706);
-  border-radius: 30%;
+  border-radius: 20%;
   cursor: pointer;
   padding: 15px;
   font-size: 20px;
 }
 
 .carrousel__nav--left {
-  left: 50px;
+  left: 20px;
 }
 
 .carrousel__nav--right {
-  right: 50px;
+  right: 20px;
 }/*# sourceMappingURL=style.css.map */
