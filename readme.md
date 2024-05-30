@@ -14,6 +14,15 @@ Le carrousel amélioré offre plusieurs nouvelles fonctionnalités pour amélior
 - **Adaptatif sur Mobile** : Le carrousel s'adapte maintenant parfaitement aux écrans mobiles grâce à des ajustements CSS pour une meilleure réactivité. Sur les petits écrans, il occupe 100% de la largeur et de la hauteur de la fenêtre, et les boutons de navigation sont dimensionnés pour être facilement utilisables.
 - **Navigation Améliorée** : Des boutons fléchés à gauche et à droite ont été ajoutés pour permettre une navigation simple entre les images. Ces boutons déclenchent une transition douce pour un affichage fluide des images.
 - **Transitions Douces** : Les transitions entre les images sont maintenant réalisées avec une animation de fondu, rendant le changement d'images moins brusque et visuellement agréable.
+### Carrousel d'Images
+
+Le carrousel permet d’afficher les images d’une galerie. Voici les fonctionnalités de navigation :
+
+- Une série de boutons radio permettant d’accéder à chacune des images
+- Deux flèches « Précédent » et « Suivant »
+- En cliquant sur une image de la galerie, le carrousel s’affiche avec l’image sélectionnée
+- Le changement d’image est animé
+- La dimension de la boîte modale s’adapte aux proportions de l’image source
 
 ### Modifications Techniques
 - **carrousel.php** : Intégration des boutons de navigation et ajustements pour une intégration responsive.
